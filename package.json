@@ -1,0 +1,30 @@
+{
+  "name": "gulp-frontend-template",
+  "version": "1.0.0",
+  "description": "from krovatiMet",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "0.4.0",
+    "gulp-image-resize": "^0.13.0",
+    "gulp-imagemin": "5.0.3",
+    "npm": "^6.7.0",
+    "gulp-install": "^1.1.0",
+    "natives": "^1.1.6",
+    "gulp-rename": "^1.4.0",
+    "run-sequence": "2.2.1"
+  },
+  "scripts": {
+    "start": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheSpaceHuman/gulp-teamplate.git"
+  },
+  "author": "TheSpaceHuman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheSpaceHuman/gulp-teamplate/issues"
+  },
+  "homepage": "https://github.com/TheSpaceHuman/gulp-teamplate#readme"
+}
