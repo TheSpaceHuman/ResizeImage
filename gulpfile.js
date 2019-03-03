@@ -3,6 +3,7 @@ var imagemin = require('gulp-imagemin');
 var clean = require('gulp-clean');
 var rename  = require ("gulp-rename");
 var imageResize = require('gulp-image-resize');
+var run = require('run-sequence');
 
 
 gulp.task('imagemin', function () {
@@ -16,6 +17,7 @@ gulp.task('imagemin', function () {
       .pipe(gulp.dest('build'))
 });
 
+var counterNameResize = 1;
 gulp.task('resize', function () {
   gulp.src('src/**/*.{png,jpg,svg}')
       .pipe(imageResize({
@@ -23,15 +25,21 @@ gulp.task('resize', function () {
         height : 325,
         crop: true
       }))
-      .pipe(gulp.dest('build_new'));
+      .pipe(rename(function (path) {
+        path.basename = counterNameResize;
+        counterNameResize++;
+      }))
+      .pipe(gulp.dest('build/crop-img'));
 });
 
+var counterNameNew = 1;
 gulp.task('new-name', function () {
   gulp.src('src/**/*.{png,jpg,svg}')
       .pipe(rename(function (path) {
-        path.basename += "-Big";
+        path.basename = counterNameNew;
+        counterNameNew++;
       }))
-      .pipe(gulp.dest('build_newName'));
+      .pipe(gulp.dest('build/big-img'));
 });
 
 gulp.task('clean', function () {
@@ -40,7 +48,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('build', function (callback) {
-  run('clean', 'resize', callback);
+  run('clean', 'resize', 'new-name', callback);
 });
 
 

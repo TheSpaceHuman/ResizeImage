@@ -2,3 +2,5 @@
 /build
 /build_new
 /build_newName
+package-lock.json
+.idea
